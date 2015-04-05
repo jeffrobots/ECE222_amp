@@ -1,0 +1,67 @@
+Notes for Headphone Amplifier specs
+Jeff Baatz - APR 5 2015
+
+Specifications:
+_________________
+Output Load Impedence	: 	32-300 ohms
+Output Power			:	>100mW/ch on Battery
+							>200mW/ch on AC @32 ohms
+Output Impedence		: 	<5 ohms
+Input Signal Amplitude	:	.3V
+Input Impedence:		:	>10k ohms
+3-db full-power BW		:	20Hz - 15kHz (minimum)
+						:	18 - 20kHz  (max)
+Total harmonic
+distortion + noise		:	<.1% w/ 100mW @ 1kHz
+Power Supply			:	7-9V (2x 9V battery)
+							12v on adapter regulated onboard
+Power Consumption		:	100mA on battery
+							150mA on AC adapter
+							@ max power
+
+
+Suggested Devices & Notes
+__________________
+Input Circuit:
+	* Make sure to couple with a capacitor to filter out any DC component.
+	*	10k input Impedance
+	*	RC Filter @ 3MHz is sufficient
+	*	Series resistance to current limit
+		- We will want to choose a low resistor for this to limit noise
+
+Gain Stage:
+	*	Op Amp (non-inverting for noise)
+		Op Amp choices can be taken from
+		 http://nwavguy.blogspot.com/2011/08/op-amp-measurements.html
+
+Volume Control:
+	*	Located between gain stage and output
+	*	Want to filter out DC with a cap
+	*	Set gain to avoid channel imbalance (which usually occurs in lower 5% of pot level)
+	*	Audio Taper (?)
+
+Output Stage:
+	*	Use an op amp or current buffer
+		- Need high current
+		- Low distortion
+		- Through Hole
+		- 12-24 Volts (for AC and DC op)
+	* Suggested Parts:
+		- NJM4556, TLC2062, RC4580, or NJM2068
+	* Connected the two output op-amps (if we use two) can be done with a 1-2 ohm resistor
+	* Can current limit the output actively
+		- Or, more cheaply, we can just use resistors
+
+
+Ground:
+	* Star ground is best
+		- Let each stage have its own path to a single ground reference
+		- There might not even be a different with this in simulation
+
+Power Management:
+	* Need to do additional research on what to do for this.
+
+
+
+
+
