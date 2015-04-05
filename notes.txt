@@ -33,12 +33,14 @@ Gain Stage:
 	*	Op Amp (non-inverting for noise)
 		Op Amp choices can be taken from
 		 http://nwavguy.blogspot.com/2011/08/op-amp-measurements.html
+	*	Ended up choosing OPA134 for initial simulation.
 
 Volume Control:
 	*	Located between gain stage and output
 	*	Want to filter out DC with a cap
 	*	Set gain to avoid channel imbalance (which usually occurs in lower 5% of pot level)
 	*	Audio Taper (?)
+	*	Need to figure out how to make a POT in spice.
 
 Output Stage:
 	*	Use an op amp or current buffer
@@ -48,6 +50,8 @@ Output Stage:
 		- 12-24 Volts (for AC and DC op)
 	* Suggested Parts:
 		- NJM4556, TLC2062, RC4580, or NJM2068
+		- Ended up trying NJM4556 first, since we have it in stock.
+		- It's also recommended pretty highly. 
 	* Connected the two output op-amps (if we use two) can be done with a 1-2 ohm resistor
 	* Can current limit the output actively
 		- Or, more cheaply, we can just use resistors
