@@ -12,5 +12,10 @@ The project will require the following steps:
 - [ ] Verify functionality
 
 Optional goals include: 
-- [ ] Don't break and headphones in the process
+- [ ] Don't break any headphones in the process
 - [ ] Finish without an all-nighter in ITS
+- 
+
+Gain Stage with LPF
+
+[![CircuitLab Schematic 6gf4tx](https://www.circuitlab.com/circuit/6gf4tx/screenshot/540x405/)](https://www.circuitlab.com/circuit/6gf4tx/gainstage/)
