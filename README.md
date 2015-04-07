@@ -17,5 +17,4 @@ Optional goals include:
 - 
 
 Gain Stage with LPF
-
 [![CircuitLab Schematic 6gf4tx](https://www.circuitlab.com/circuit/6gf4tx/screenshot/540x405/)](https://www.circuitlab.com/circuit/6gf4tx/gainstage/)
