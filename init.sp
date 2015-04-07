@@ -6,23 +6,30 @@
 .include njm4556a_3_hspice.lib
 .include LF411C.lib
 
-** Sources and Signal (one channel)
-Vsig nIn ng AC=.3 dc=0
-Vp nP ng dc=18
-Vn nN ng dc=0
+* Sources and input signal
+Vsig 1 0 AC=1
+VDD 90 0 dc=15
+VEE 91 0 dc=-15
 
 ****Gain Stage****
 * Filter (one channel, may need to AC couple)
-RF1 nIn nF1 270
-CF1 nF1 ng 200p
-Rin nF1 ng 10k
+RF1 1 2 270
+CF1 2 0 200p
+Rin 2 0 10k
 *Op Amp goes here (OPA134, OPTA2134, or LME49600 can be swapped)
-X1 nF1 nfb Vp Vn nGainO LF411C
+X0 2 3 90 91 4 LF411C
 * Feedback network for op amp
 * Results in 3X gain and 250kHz corner
-Rfb1 nGainO nfb 2k
-Cfb1 nGainO nfb 220p
-Rfbg1 nfb ng 1k
+Rfb1 4 2 2k
+Cfb1 4 3 220p
+Rfbg1 3 0 1k
+
+* ****Volume Stage****
+* * Need to implement a ~10k pot for volume
+* * For now this can just be two resistors @ 5k
+Rpot1 4 0 5k
+*Rpot2 nVol 0 5k
+
 
 * ****Volume Stage****
 * * Need to implement a ~10k pot for volume
