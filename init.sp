@@ -27,29 +27,25 @@ Rfbg1 3 0 1k
 * ****Volume Stage****
 * * Need to implement a ~10k pot for volume
 * * For now this can just be two resistors @ 5k
-Rpot1 4 0 5k
-*Rpot2 nVol 0 5k
-
-
-* ****Volume Stage****
-* * Need to implement a ~10k pot for volume
-* * For now this can just be two resistors @ 5k
-*Rpot1 nGainO nVol 5k
-*Rpot2 nVol ng 5k
+** Pot output is at node 5
+Rpot1 4 5 5k
+Rpot2 5 0 5k
 
 * ****Output Stage****
 * * AC couple
-* Cac1 nac1 nVol 220p
+Cac1 6 5 220p
 * * Current Driver goes here (Use NJM4556)
 * * Output of this stage will be the overall output
-* Xo1 OUT1 nCAp OUT1 nN nCBp OUT2 OUT2 nP NJM4556A
-* RcA OUTPUT OUT1 2
-* RcB OUTPUT OUT2 2
-
+X1 out1 6 out1 91 6 out2 out2 90 NJM4556A
+RcA output out1 2
+RcB output out2 2
+Rload output 0 32
 
 **** Analysis ****
 .AC dec 100 1 10Meg
 .OPTIONS POST
+.probe VM(output)
+.probe IM(Rload)
 
 .END
 
