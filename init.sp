@@ -8,8 +8,8 @@
 
 * Sources and input signal
 Vsig 1 0 AC=1
-VDD 90 0 dc=15
-VEE 91 0 dc=-15
+VDD 90 0 dc=9
+VEE 91 0 dc=-9
 
 ****Gain Stage****
 * Filter (one channel, may need to AC couple)
@@ -20,7 +20,7 @@ Rin 2 0 10k
 X0 2 3 90 91 4 LF411C
 * Feedback network for op amp
 * Results in 3X gain and 250kHz corner
-Rfb1 4 2 2k
+Rfb1 4 3 2k
 Cfb1 4 3 220p
 Rfbg1 3 0 1k
 
@@ -33,10 +33,13 @@ Rpot2 5 0 5k
 
 * ****Output Stage****
 * * AC couple
-Cac1 6 5 220p
+Cac1 6 5 10u
 * * Current Driver goes here (Use NJM4556)
-* * Output of this stage will be the overall output
+* * Output of this stage will be the overall output.
+* * Pin Connections for NJM556A:
+* * NJM4556A OUT1 IN1+ IN1- V- IN2+ IN2- OUT2 V+
 X1 out1 6 out1 91 6 out2 out2 90 NJM4556A
+Rbuf 6 0  40k
 RcA output out1 2
 RcB output out2 2
 Rload output 0 32
@@ -46,6 +49,10 @@ Rload output 0 32
 .OPTIONS POST
 .probe VM(output)
 .probe IM(Rload)
+.probe VM(5)
+.probe VM(out1)
+.probe VM(6)
+.probe IM(RcA)
 
 .END
 
