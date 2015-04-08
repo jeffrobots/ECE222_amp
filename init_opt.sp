@@ -5,7 +5,7 @@
 .include OPA2134.lib
 .include njm4556a_3_hspice.lib
 .include LF411C.lib
-*.PARAM capac = .1n
+*.PARAM capac = 1n
 ** Sources and Signal (one channel)
 
 Vsig 1 0 AC=.3 
@@ -18,11 +18,11 @@ RF1 1 2 270
 CF1 2 0 200p
 Rin 2 0 10k
 *Op Amp goes here (OPA134, OPTA2134, or LME49600 can be swapped)
-X0 2 3 90 91 4 LF411C 
+X0 2 3 90 91 4 OPA2134 
 * Feedback network for op amp
 * Results in 3X gain and 250kHz corner
 Rfb1 4 3 6.5k
-Cfb1 4 3 1.2n
+Cfb1 4 3 1.24n 
 Rfbg1 3 0 1k
 
 
@@ -46,7 +46,7 @@ Rload output 0 32
 
 **** Analysis ****
 .AC dec 100 1 10Meg
-* SWEEP capac .1n 10n .01n
+* SWEEP capac 1n 2n .01n
 .OPTIONS POST
 .probe VM(output)
 .probe IM(Rload)
