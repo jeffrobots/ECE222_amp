@@ -17,8 +17,8 @@ Optional goals include:
 
 
 Tasks:
-- [ ] Increase gain of gain stage to provide 35mA at output (will need to multiply gain by ~2.5)
-- [ ] Optimize capacitor in gain stage feedback to provide 18-20kHz bandwidth
+- [x] Increase gain of gain stage to provide 35mA at output (will need to multiply gain by ~2.5)
+- [x] Optimize capacitor in gain stage feedback to provide 18-20kHz bandwidth
 - [ ] Place a better op amp in gain stage
 - [ ] Verify output impedance, input impedance, and power @ 32 ohms
 - [ ] Noise Testing
