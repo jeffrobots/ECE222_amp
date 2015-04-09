@@ -18,12 +18,17 @@ Optional goals include:
 
 Tasks:
 - [x] Increase gain of gain stage to provide 35mA at output (will need to multiply gain by ~2.5)
-- [x] Optimize capacitor in gain stage feedback to provide 18-20kHz bandwidth
-- [ ] Place a better op amp in gain stage
+- [x] Place a better op amp in gain stage
+- [ ] Optimize capacitor in gain stage feedback to provide 18-20kHz bandwidth
+      * Optimize for FULL POWER bandwidth on 18-20kHz (.99% of Gain is acceptable)
+      * Slew rate must be 6k to achieve desired slew bandwidth 
+- [ ] Optimize power usage. Must draw a total of 100mA (50mA per channel) at max RMS Power
 - [ ] Verify output impedance, input impedance, and power @ 32 ohms
-- [ ] Noise Testing
-- [ ] Power Management :( 
-
+- [ ] Noise Testing (.NOISE)
+- [ ] THD Testing (.DISTRO)
+- [x] Power Management Circuit for battery
+- [ ] Implement AC Power Options
+      * Should feed into already implemented battery circuit. 
 
 
 
