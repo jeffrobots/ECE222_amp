@@ -9,7 +9,7 @@
 ** Sources and Signal (one channel)
 Xbat 90 91 battery
 *Vsig 1 0 ac=.424
-Vtran 1 0 SIN(0 .849 1k 0 0 0)
+Vtran 1 0 SIN(0 .5 1k 0 0 0)
 
 ****Gain Stage****
 * Filter (one channel, may need to AC couple)
@@ -49,10 +49,10 @@ Rload output 0 32
 .TRAN .01m 10m
 *.FFT v(output) start=0m stop = 5m freq=1k window=HAMM fmin=1k 
 *.DISTO Rload  dec 100 1 1meg
-.probe VM(output)
-.probe IM(Rload)
-.probe VM(5)
-.probe VM(out1)
-.probe VM(6)
-.probe IM(RcA)
+.probe V(output)
+.probe I(Rload)
+.probe V(5)
+.probe V(out1)
+.probe V(6)
+.probe I(RcA)
 .END
