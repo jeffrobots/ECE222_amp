@@ -23,7 +23,7 @@
 * Simulator Version: 16.0.0.p001
 * EVM Order Number: N/A
 * EVM Users Guide: N/A
-* Datasheet: SBOS100A – JULY 1999 – REVISED OCTOBER 2003
+* Datasheet: SBOS100A Â– JULY 1999 Â– REVISED OCTOBER 2003
 *
 * Model Version: 1.0
 *
@@ -64,9 +64,9 @@ R158 108 105 24
 *
 * BEGIN PSPICE SYNTAX
 *
-E53 100 0 VALUE={V(33)*V(34)}
-E56 101 0 VALUE={V(35)*V(36)}
-E75 84 0 VALUE={V(37)*V(38)}
+E53 100 0 VALUE='V(33)*V(34)'
+E56 101 0 VALUE='V(35)*V(36)'
+E75 84 0 VALUE='V(37)*V(38)'
 *
 * END PSPICE SYNTAX
 *
