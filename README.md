@@ -34,5 +34,4 @@ Tasks:
 
 
 Full Circuit (one channel only)
-
 [![CircuitLab Schematic k54het](https://www.circuitlab.com/circuit/k54het/screenshot/540x405/)](https://www.circuitlab.com/circuit/k54het/headphoneamp/)
