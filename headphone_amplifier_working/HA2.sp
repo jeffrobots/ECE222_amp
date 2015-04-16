@@ -16,25 +16,27 @@
 ** Battery currently not operational
 *Xbat 90 91 0 battery
 
-.PARAM freq = 1
+.PARAM freq = 20
 Vsig 1 0 SIN(0 .424 freq 0 0 0) ac=.424
 VDD 90 0 dc=9
 VEE 0 91 dc=9
 
 
 ****Gain Stage****
-* Filter (Bandpassed from 3.18-39.7k)
-Cac 1 2 2.5u
-CF1 2 0 200p
-Rin 2 0 20k
+
+.PARAM cap1 = 100p
+C1 2 0 cap1
+Rin 2 1 270
+R6 2 0 50k
 *(OPA134, OPTA2134)
-*X0 2 3 90 91 4 OPA2134 
-X0 2 3 90 91 4 TLE2071
+X0 2 3 90 91 4 OPA2134 
+*X0 2 3 90 91 4 TLE2071
 * Feedback network for op amp
 * Results in 3X gain and 250kHz corner
-Rfb1 3 4 1.2k
-Cfb1 3 4 220p
-Rfbg1 3 0 200
+.PARAM CAPfb1 = 200p
+Rfb1 3 4 5k
+Cfb1 3 4 CAPfb1
+Rfbg1 3 0 1k
 
 
 ***Volume stage****
@@ -44,25 +46,31 @@ Rfbg1 3 0 200
 Rpot1 4 5 1
 Rpot2 5 0 9999
 
+*** Input to Output op-amp
+
+.PARAM CAP5 = 10u
+C5 5 6 CAP5
+R11 6 0 40k
+
 
 * * ****Output Stage****
 * *X1 out1 6 out1 91 0 0 0 90 NJM4556A
 *
 * PINOUT ORDER +IN -IN +V -V OUT FLG for OPA551
 
-X1 5 out1 90 91 out1 0 OPA551
+X1 6 out1 90 91 out1 0 OPA551
 Rload out1 0 32
 
 
 **** Analysis ****
 .OPTIONS POST
 
-*.AC dec 100 1 10Meg
+*.AC dec 100 1 1Meg
 *.PROBE IM(Rload)
 
 *.NOISE v(output) Vsig 10 
-.TRAN .01m 10m SWEEP freq dec 5 1 100k
-.FFT v(out1) start=0m stop = 5m freq=1k window=HAMM fmin=1k 
+.TRAN .01m 15m SWEEP freq dec 10 1 100k
+*.FFT v(out1) start=0m stop = 5m freq=1k window=HAMM fmin=1k 
 
 .PROBE total_current=PAR('abs(I(VDD))')
 .PROBE load_power=PAR('I(Rload)*V(out1)')
