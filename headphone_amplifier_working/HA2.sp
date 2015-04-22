@@ -75,4 +75,5 @@ Rload out1 0 32
 .NOISE V(out1) Vsig 1
 *.PROBE total_current=PAR('abs(I(VDD))')
 *.PROBE load_power=PAR('I(Rload)*V(out1)')
+.probe noise onoise onoise(m) onoise(db)
 .END
