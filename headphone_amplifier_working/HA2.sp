@@ -16,15 +16,15 @@
 ** Battery currently not operational
 *Xbat 90 91 0 battery
 
-.PARAM freq = 20
+.PARAM freq = 10
 Vsig 1 0 SIN(0 .424 freq 0 0 0) ac=.424
 VDD 90 0 dc=9
 VEE 0 91 dc=9
 
 
 ****Gain Stage****
-
-.PARAM cap1 = 100p
+** 220pF capacitors are used in actual circuit
+.PARAM cap1 = 220p
 C1 2 0 cap1
 Rin 2 1 270
 R6 2 0 50k
@@ -33,7 +33,7 @@ X0 2 3 90 91 4 OPA2134
 *X0 2 3 90 91 4 TLE2071
 * Feedback network for op amp
 * Results in 3X gain and 250kHz corner
-.PARAM CAPfb1 = 200p
+.PARAM CAPfb1 = 220p
 Rfb1 3 4 5k
 Cfb1 3 4 CAPfb1
 Rfbg1 3 0 1k
@@ -69,10 +69,10 @@ Rload out1 0 32
 *.PROBE IM(Rload)
 
 *.NOISE v(output) Vsig 10 
-.TRAN .01m 15m SWEEP freq dec 10 1 100k
+*.TRAN .01m 15m SWEEP freq dec 10 1 100k
 *.FFT v(out1) start=0m stop = 5m freq=1k window=HAMM fmin=1k 
-
-.PROBE total_current=PAR('abs(I(VDD))')
-.PROBE load_power=PAR('I(Rload)*V(out1)')
-
+.AC dec 100 1 50k
+.NOISE V(out1) Vsig 1
+*.PROBE total_current=PAR('abs(I(VDD))')
+*.PROBE load_power=PAR('I(Rload)*V(out1)')
 .END
