@@ -28,7 +28,7 @@ Rin 1 2 0
 
 ****Gain Stage****
 ** 220pF capacitors are used in actual circuit
-.PARAM cap1 = 630n
+.PARAM cap1 = 560n
 C1 3 2 cap1
 *Rin 3 2 270
 R6 3 0 14.8k
