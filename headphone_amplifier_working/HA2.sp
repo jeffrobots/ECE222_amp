@@ -16,7 +16,7 @@
 ** Battery currently not operational
 *Xbat 90 91 0 battery
 
-.PARAM freq = 10
+.PARAM freq = 20
 Vsig 1 0 SIN(0 .424 freq 0 0 0) ac=.424
 VDD 90 0 dc=9
 VEE 0 91 dc=9
@@ -28,10 +28,10 @@ Rin 1 2 0
 
 ****Gain Stage****
 ** 220pF capacitors are used in actual circuit
-.PARAM cap1 = 820n
+.PARAM cap1 = 630n
 C1 3 2 cap1
 *Rin 3 2 270
-R6 3 0 11k
+R6 3 0 14.8k
 *(OPA134, OPTA2134)
 X0 3 5 90 91 4 OPA2134 
 
@@ -52,9 +52,9 @@ Rpot2 6 0 9999
 
 *** Input to Output op-amp, Low-pass filter ***
 
-.PARAM CAP5 = 680p
+.PARAM CAP5 = 100p
 C5 7 0 CAP5
-R11 6 7 10k
+R11 6 7 82k
 
 
 * * ****Output Stage****
@@ -72,8 +72,7 @@ Rload out1 0 32
 .AC dec 100 1 100k
 .PROBE IM(Rload)
 
-*.NOISE v(output) Vsig 10 
-*.TRAN .01m 30m SWEEP freq dec 10 1 30k
+*.TRAN .01m 30m SWEEP freq dec 10 1 50k
 *.PROBE I(Rload)
 *.FFT v(out1) start=0m stop = 5m freq=1k window=HAMM fmin=1k 
 *.AC dec 100 1 50k
