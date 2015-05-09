@@ -31,7 +31,11 @@ Ccouple 1 2 100n
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 .PARAM cap1 = 560n
+=======
+.PARAM cap1 = 630n
+>>>>>>> parent of bc21dbc... updated capacitor value
 =======
 .PARAM cap1 = 630n
 >>>>>>> parent of bc21dbc... updated capacitor value
