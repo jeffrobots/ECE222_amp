@@ -29,7 +29,11 @@ Ccouple 1 2 100n
 ****Gain Stage****
 ** 220pF capacitors are used in actual circuit
 <<<<<<< HEAD
+<<<<<<< HEAD
 .PARAM cap1 = 560n
+=======
+.PARAM cap1 = 630n
+>>>>>>> parent of bc21dbc... updated capacitor value
 C1 3 2 cap1
 *Rin 3 2 270
 R6 3 0 14.8k
