@@ -23,18 +23,25 @@ VEE 0 91 dc=9
 
 ** AC Coupling capacitor **
 
-Rin 1 2 0
+Ccouple 1 2 100n
 
 
 ****Gain Stage****
 ** 220pF capacitors are used in actual circuit
+<<<<<<< HEAD
 .PARAM cap1 = 560n
 C1 3 2 cap1
 *Rin 3 2 270
 R6 3 0 14.8k
+=======
+.PARAM cap1 = 220p
+C1 3 0 cap1
+Rin 3 2 270
+R6 3 0 50k
+>>>>>>> parent of 8e832c4... changed bandwidth of design
 *(OPA134, OPTA2134)
 X0 3 5 90 91 4 OPA2134 
-
+*X0 2 3 90 91 4 TLE2071
 * Feedback network for op amp
 * Results in 6X gain and 250kHz corner
 .PARAM CAPfb1 = 100p
@@ -69,11 +76,17 @@ Rload out1 0 32
 **** Analysis ****
 .OPTIONS POST
 
-.AC dec 100 1 100k
-.PROBE IM(Rload)
+*.AC dec 100 1 1Meg
+*.PROBE IM(Rload)
 
+<<<<<<< HEAD
 *.TRAN .01m 30m SWEEP freq dec 10 1 50k
 *.PROBE I(Rload)
+=======
+*.NOISE v(output) Vsig 10 
+.TRAN .01m 30m SWEEP freq dec 10 1 30k
+.PROBE I(Rload)
+>>>>>>> parent of 8e832c4... changed bandwidth of design
 *.FFT v(out1) start=0m stop = 5m freq=1k window=HAMM fmin=1k 
 *.AC dec 100 1 50k
 *.NOISE V(out1) Vsig 1
