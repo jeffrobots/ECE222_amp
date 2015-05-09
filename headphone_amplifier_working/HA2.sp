@@ -30,7 +30,11 @@ Ccouple 1 2 100n
 ** 220pF capacitors are used in actual circuit
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 .PARAM cap1 = 560n
+=======
+.PARAM cap1 = 630n
+>>>>>>> parent of bc21dbc... updated capacitor value
 =======
 .PARAM cap1 = 630n
 >>>>>>> parent of bc21dbc... updated capacitor value
