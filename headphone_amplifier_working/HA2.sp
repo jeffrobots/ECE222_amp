@@ -5,10 +5,7 @@
 
 .include sedra_lib.lib
 .include OPA2134.lib
-.include njm4556a_3_hspice.lib
-.include battery.lib
 .include OPA551.lib
-.include TLE2071_v2.lib
 
 
 *.PARAM capac = 1n
@@ -16,42 +13,17 @@
 ** Battery currently not operational
 *Xbat 90 91 0 battery
 
-.PARAM freq = 20
+.PARAM freq = 1k 
 Vsig 1 0 SIN(0 .424 freq 0 0 0) ac=.424
 VDD 90 0 dc=9
 VEE 0 91 dc=9
 
-** AC Coupling capacitor **
-
-Ccouple 1 2 100n
-
-
 ****Gain Stage****
 ** 220pF capacitors are used in actual circuit
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-.PARAM cap1 = 560n
-=======
-.PARAM cap1 = 630n
->>>>>>> parent of bc21dbc... updated capacitor value
-=======
-.PARAM cap1 = 630n
->>>>>>> parent of bc21dbc... updated capacitor value
-=======
-.PARAM cap1 = 630n
->>>>>>> parent of bc21dbc... updated capacitor value
-C1 3 2 cap1
+.PARAM cap1 = 470n
+C1 3 1 cap1
 *Rin 3 2 270
-R6 3 0 14.8k
-=======
-.PARAM cap1 = 220p
-C1 3 0 cap1
-Rin 3 2 270
-R6 3 0 50k
->>>>>>> parent of 8e832c4... changed bandwidth of design
-*(OPA134, OPTA2134)
+R6 3 0 18k
 X0 3 5 90 91 4 OPA2134 
 *X0 2 3 90 91 4 TLE2071
 * Feedback network for op amp
@@ -88,21 +60,19 @@ Rload out1 0 32
 **** Analysis ****
 .OPTIONS POST
 
-*.AC dec 100 1 1Meg
-*.PROBE IM(Rload)
+*.AC dec 100 1 100k 
+.PROBE VM(out1)
 
-<<<<<<< HEAD
-*.TRAN .01m 30m SWEEP freq dec 10 1 50k
-*.PROBE I(Rload)
-=======
-*.NOISE v(output) Vsig 10 
-.TRAN .01m 30m SWEEP freq dec 10 1 30k
+.TRAN .01m 30m
+* SWEEP freq dec 10 1 50k
 .PROBE I(Rload)
->>>>>>> parent of 8e832c4... changed bandwidth of design
-*.FFT v(out1) start=0m stop = 5m freq=1k window=HAMM fmin=1k 
+*.NOISE v(output) Vsig 10 
+
+.PROBE I(Rload)
+.FFT v(out1) start=0m stop = 5m freq=1k window=HAMM fmin=1k 
 *.AC dec 100 1 50k
 *.NOISE V(out1) Vsig 1
 *.PROBE total_current=PAR('abs(I(VDD))')
-*.PROBE load_power=PAR('I(Rload)*V(out1)')
+.PROBE load_power=PAR('I(Rload)*V(out1)')
 *.probe noise onoise onoise(m) onoise(db)
 .END
